@@ -138,8 +138,6 @@ def ask(question, answer_type=str, default=None):
 class sdist(_sdist):
 
     def run(self):
-        # call build sphinx to build docs
-        self.run_command("build_sphinx")
         # call parent install data
         _sdist.run(self)
 
@@ -393,9 +391,7 @@ DATA_FILES = {
         # Celery worker for linux (removed as cannot chmod using setuptools)
         # ('/etc/init.d/',  ['extras/init.d/celeryd.probe']),
         # ('/etc/default/', ['extras/default/celeryd.probe']),
-    ]  # IRMA documentation generated with build_sphinx
-       + include_data('docs/', base='')
-       # IRMA extras files
+    ]  # IRMA extras files
        + include_data('extras/', base=''),
     'win32': [
         # setup.py related files
@@ -409,9 +405,7 @@ DATA_FILES = {
         #         'extras/celery/winsrv/service.py'
         #     ]
         # )
-    ]  # IRMA documentation generated with build_sphinx
-       + include_data('docs/', base='')
-       # IRMA extras files
+    ]  # IRMA extras files
        + include_data('extras/', base=''),
 }
 
