@@ -33,7 +33,7 @@ class ESET8Plugin(PluginBase, ESET8, AntivirusPluginInterface):
     _plugin_author_ = "Ben aka turbo420"
     _plugin_version_ = "1.0.0"
     _plugin_category_ = IrmaProbeType.antivirus
-    _plugin_description_ = "Plugin for Eset SMART Security 8 Antivirus on Windows"
+    _plugin_description_ = "Plugin for Eset Smart Security 8 Antivirus on Windows"
     _plugin_dependencies_ = [
         PlatformDependency('win32')
     ]
