@@ -29,8 +29,8 @@ class ESET8Plugin(PluginBase, ESET8, AntivirusPluginInterface):
     #  plugin metadata
     # =================
 
-    _plugin_name_ = "ESET8"
-    _plugin_author_ = "IRMA (c) Quarkslab"
+    _plugin_name_ = "Eset8"
+    _plugin_author_ = "Ben aka turbo420"
     _plugin_version_ = "1.0.0"
     _plugin_category_ = IrmaProbeType.antivirus
     _plugin_description_ = "Plugin for ESET SMART Security Antivirus on Windows"
