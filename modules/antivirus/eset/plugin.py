@@ -13,30 +13,40 @@
 # modified, propagated, or distributed except according to the
 # terms contained in the LICENSE file.
 
-from .nod32 import EsetNod32
+import os
+
+from .nod32 import nod32
 from ..interface import AntivirusPluginInterface
 
-from lib.plugins import PluginBase
-from lib.plugins import BinaryDependency, PlatformDependency
+from lib.plugins import PluginBase, PluginLoadError
+from lib.plugins import PlatformDependency
 from lib.irma.common.utils import IrmaProbeType
 
 
-class EsetNod32Plugin(PluginBase, EsetNod32, AntivirusPluginInterface):
+class nod32Plugin(PluginBase, nod32, AntivirusPluginInterface):
 
     # =================
     #  plugin metadata
     # =================
 
-    _plugin_name_ = "EsetNod32"
-    _plugin_author_ = "IRMA (c) Quarkslab"
+    _plugin_name_ = "Eset"
+    _plugin_author_ = "Ben aka turbo420"
     _plugin_version_ = "1.0.0"
     _plugin_category_ = IrmaProbeType.antivirus
-    _plugin_description_ = "Plugin for ESET NOD32 Antivirus Business " \
-                           "Edition for Linux Desktop"
-    _plugin_dependencies_ = [
-        PlatformDependency('linux'),
-        BinaryDependency('/opt/eset/esets/sbin/esets_scan')
-    ]
+    _plugin_description_ = "Plugin for Eset Smart Security 8 Antivirus on Windows & ESET NOD32 Antivirus Business for Linux Desktop"
+    _plugin_dependencies_ = []
+
+    @classmethod
+    def verify(cls):
+        # create an instance
+        module = nod32()
+        path = module.scan_path
+        del module
+        # perform checks
+        if not path or not os.path.exists(path):
+            raise PluginLoadError("{0}: verify() failed because "
+                                  "ESET executable was not found."
+                                  "".format(cls.__name__))
 
     # =============
     #  constructor
@@ -44,4 +54,4 @@ class EsetNod32Plugin(PluginBase, EsetNod32, AntivirusPluginInterface):
 
     def __init__(self):
         # load default configuration file
-        self.module = EsetNod32()
+        self.module = nod32()
