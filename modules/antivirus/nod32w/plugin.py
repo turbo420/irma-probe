@@ -29,13 +29,13 @@ class nod32Plugin(PluginBase, nod32, AntivirusPluginInterface):
     #  plugin metadata
     # =================
 
-    _plugin_name_ = "Eset8"
+    _plugin_name_ = "Eset"
     _plugin_author_ = "Ben aka turbo420"
     _plugin_version_ = "1.0.0"
     _plugin_category_ = IrmaProbeType.antivirus
-    _plugin_description_ = "Plugin for Eset Smart Security 8 Antivirus on Windows"
+    _plugin_description_ = "Plugin for Eset Smart Security 8 Antivirus on Windows & ESET NOD32 Antivirus Business for Linux Desktop"
     _plugin_dependencies_ = [
-        PlatformDependency('win32')
+        PlatformDependency()
     ]
 
     @classmethod
@@ -47,7 +47,7 @@ class nod32Plugin(PluginBase, nod32, AntivirusPluginInterface):
         # perform checks
         if not path or not os.path.exists(path):
             raise PluginLoadError("{0}: verify() failed because "
-                                  "ESET SMART Security executable was not found."
+                                  "ESET executable was not found."
                                   "".format(cls.__name__))
 
     # =============
