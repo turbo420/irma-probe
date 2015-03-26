@@ -58,22 +58,22 @@ class nod32(Antivirus):
 
     def get_version(self):
         """return the version of the antivirus"""
-        result = None
-        
-		
+        result = None	
         if self._is_windows:
             cmd = self.build_cmd(self.scan_path, '/version')
             retcode, stdout, stderr = self.run_cmd(cmd)
+
+   
         else:
             cmd = self.build_cmd(self.scan_path, '--version')
             retcode, stdout, stderr = self.run_cmd(cmd)
 			
-            if not retcode:
-                matches = re.search(r'(?P<version>\d+(\.\d+)+)',
+        if not retcode:
+            matches = re.search(r'(?P<version>\d+(\.\d+)+)',
                                     stdout,
                                     re.IGNORECASE)
-            if matches:
-                result = matches.group('version').strip()
+        if matches:
+         result = matches.group('version').strip()
         return result
 
     def get_database(self):
