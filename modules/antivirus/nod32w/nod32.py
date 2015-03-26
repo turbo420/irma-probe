@@ -32,7 +32,10 @@ class nod32(Antivirus):
         # class super class constructor
         super(nod32, self).__init__(*args, **kwargs)
         # set default antivirus information
-        self._name = "ESET NOD32 Antivirus Business Edition for Linux Desktop & ESET8 Anti-Virus for Windows"
+        if self._is_windows:
+            self._name = "ESET8 Anti-Virus for Windows"
+        else:
+            self._name = "ESET NOD32 Antivirus Business Edition for Linux Desktop"
         # scan tool variables
         if self._is_windows:
             self._scan_args = (
