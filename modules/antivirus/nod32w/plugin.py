@@ -34,9 +34,7 @@ class nod32Plugin(PluginBase, nod32, AntivirusPluginInterface):
     _plugin_version_ = "1.0.0"
     _plugin_category_ = IrmaProbeType.antivirus
     _plugin_description_ = "Plugin for Eset Smart Security 8 Antivirus on Windows & ESET NOD32 Antivirus Business for Linux Desktop"
-    _plugin_dependencies_ = [
-        PlatformDependency('win32')
-    ]
+    _plugin_dependencies_ = []
 
     @classmethod
     def verify(cls):
